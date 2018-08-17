@@ -41,6 +41,8 @@ gem 'font-awesome-sass', '~> 5.0.9'
 gem 'simple_form'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+# We don't want to share those secret keys on Github, we can use the dotenv gem for security.
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
