@@ -1,23 +1,27 @@
 <!-- show.html.erb -->
-<h1> <%= @cocktail.name %> </h1>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-<br>
+
+
+
+
 <div class="wrapper">
   <div class="container">
-    <div class="card">
-      <ul class="list">
-          <% @cocktail.doses.each do |dose| %>
-            <li> <%= dose.description %> - <%= dose.ingredient.name %>
 
-              <%= link_to cocktail_path(@cocktail),
-              method: :delete,
-              data: { confirm: "Are you sure?" } do %>
-                <i class='fas fa-trash-alt'></i>
-              <% end %>
-            </li>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @cocktail.photo %>');">
+        <div class="card-description">
+          <div class="card-category">
+            <%= @cocktail.name %>
+          </div>
+          <% @cocktail.doses.each do |dose| %>
+            <%= dose.description %> - <%= dose.ingredient.name %>
+            <%= link_to dose_path(dose),
+            method: :delete,
+            data: { confirm: "Are you sure?" } do %>
+              <i class='fas fa-trash-alt'></i>
+            <% end %>
           <% end %>
-      </ul>
-    </div>
+        </div>
+      </div>
+
   </div>
 </div>
 
